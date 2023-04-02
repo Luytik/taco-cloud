@@ -36,11 +36,12 @@
         <br />
         <label for="deliveryState">State: </label>
         <input type="text" th:field="*{deliveryState}" />
-        <span class="validation-error" th:if="${#fields.hasErrors('deliveryState')}" th:errors="*{ccNumber}"></span>
+        <span class="validation-error" th:if="${#fields.hasErrors('deliveryState')}"
+            th:errors="*{deliveryState}"></span>
         <br />
         <label for="deliveryZip">Zip: </label>
         <input type="text" th:field="*{deliveryZip}" />
-        <span class="validation-error" th:if="${#fields.hasErrors('deliveryZip')}" th:errors="*{ccNumber}"></span>
+        <span class="validation-error" th:if="${#fields.hasErrors('deliveryZip')}" th:errors="*{deliveryZip}"></span>
         <br />
         <h3>Here's how i pay...</h3>
         <label for="ccNumber">Credit Card #:</label>
@@ -49,7 +50,7 @@
         <br />
         <label for="ccExpiration"> Expiration: </label>
         <input type="text" th:field="*{ccExpiration}" />
-        <span class="validation-error" th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccNumber}"></span>
+        <span class="validation-error" th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}"></span>
         <br />
         <label for="ccCVV">CVV:</label>
         <input type="text" th:field="*{ccCVV}" />

@@ -1,4 +1,4 @@
-package tacos;
+package tacos.web;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import tacos.Ingredient;
+import tacos.Taco;
+import tacos.TacoOrder;
 import tacos.Ingredient.Type;
 
 @Slf4j
