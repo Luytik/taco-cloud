@@ -1,10 +1,9 @@
 package tacos.web;
 
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,32 +13,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import data.IngredientRepository;
 import jakarta.validation.Valid;
 import tacos.Ingredient;
 import tacos.Taco;
 import tacos.TacoOrder;
 import tacos.Ingredient.Type;
+import tacos.data.IngredientRepository;
 
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
-	
-	private final IngredientRepository ingredientRepo;
-	
-	
-	public DesignTacoController(IngredientRepository ingredientRepo) {
-		this.ingredientRepo = ingredientRepo;
-	}
+
+    private final IngredientRepository ingredientRepo;
+
+    public DesignTacoController(IngredientRepository ingredientRepo) {
+        this.ingredientRepo = ingredientRepo;
+    }
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = ingredientRepo.findAll();
- 
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
-            model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
+            model.addAttribute(type.toString().toLowerCase(),
+                    filterByType(ingredients, type));
         }
     }
 
